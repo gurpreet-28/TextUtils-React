@@ -6,7 +6,19 @@ export default function TextForm(props) {
   function handleUpClick() {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Text converted to Uppercase", "success");
   }
+  function handleLoClick() {
+    let newText = text.toLowerCase();
+    setText(newText);
+    props.showAlert("Text converted to Lowercase", "success");
+  }
+  function handleClClick() {
+    let newText = "";
+    setText(newText);
+    props.showAlert("Input Cleared", "success");
+  }
+
   function handleOnChange(event) {
     setText(event.target.value);
   }
@@ -24,14 +36,25 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick}>
+        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
           Convert To Uppercase
+        </button>
+        <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+          Convert To Lowercase
+        </button>
+        <button className="btn btn-primary mx-2" onClick={handleClClick}>
+          Clear Text
         </button>
       </div>
       <div className="container mt-3">
         <h2>Your Text Summary</h2>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          <strong>{text.split(" ").length}</strong> words and{" "}
+          <strong>{text.length} </strong>
+          characters
+        </p>
+        <p>
+          <strong>{0.008 * text.split(" ").length}</strong> Minutes Read
         </p>
         <h3>Preview</h3>
         <p>{text}</p>
