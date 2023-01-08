@@ -31,7 +31,7 @@ function App() {
               path="/"
               element={
                 <TextForm
-                  heading="Enter your text here"
+                  heading="Enter the text to analyze"
                   showAlert={showAlert}
                 />
               }
